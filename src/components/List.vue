@@ -45,8 +45,11 @@ export default {
           return;
       }
       console.log("this.group is truthy.");
+      console.log("listSampleAppsyncTables is : " + listSampleAppsyncTables);
+      const targetGroup = { group : this.group };
+      console.log("targetGroup is : " + targetGroup);
 
-      let apiResult = await API.graphql(graphqlOperation(listSampleAppsyncTables, { group : this.group }));
+      let apiResult = await API.graphql(graphqlOperation(listSampleAppsyncTables, targetGroup));
       console.log(apiResult);
       let listAll = apiResult.data.listSampleAppsyncTables.items;
       console.log(listAll);
@@ -63,7 +66,7 @@ export default {
       }
 
       API.graphql(
-          graphqlOperation(onCreateSampleAppsyncTable, { group : this.group } )
+          graphqlOperation(onCreateSampleAppsyncTable, targetGroup )
       ).subscribe({
           next: (eventData) => {
             let data = eventData.value.data.onCreateSampleAppsyncTable;
