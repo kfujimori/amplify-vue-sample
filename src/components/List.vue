@@ -34,10 +34,13 @@ export default {
     dataList: [], 
   }), 
   mounted: async function() {
+    console.log(1);
     this.getList();
+    console.log(3);
   }, 
   methods:{
     async getList() {
+      console.log(2);
       this.group = this.$route.query.group;
       console.log("group : " + this.group);
       if(!this.group){
