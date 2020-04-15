@@ -34,13 +34,10 @@ export default {
     dataList: [], 
   }), 
   mounted: async function() {
-    console.log(1);
     this.getList();
-    console.log(3);
   }, 
   methods:{
     async getList() {
-      console.log(2);
       this.group = this.$route.query.group;
       console.log("group : " + this.group);
       if(!this.group){
@@ -49,6 +46,9 @@ export default {
 
       let apiResult = await API.graphql(graphqlOperation(listSampleAppsyncTables, { group : this.group }));
       let listAll = apiResult.data.listSampleAppsyncTables.items;
+
+      console.log(listAll);
+
       for(let data of listAll) {
         let tmp = { path : data.path, image : "" };
         let list = [...this.dataList, tmp];
