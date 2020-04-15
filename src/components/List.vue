@@ -41,12 +41,13 @@ export default {
       this.group = this.$route.query.group;
       console.log("group : " + this.group);
       if(!this.group){
+          console.log("this.group is faulty.");
           return;
       }
 
       let apiResult = await API.graphql(graphqlOperation(listSampleAppsyncTables, { group : this.group }));
+      console.log(apiResult);
       let listAll = apiResult.data.listSampleAppsyncTables.items;
-
       console.log(listAll);
 
       for(let data of listAll) {
