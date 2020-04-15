@@ -82,6 +82,8 @@ export default {
       }).catch(err => {
         console.log(err);
       })
+
+      this.$router.push({ path: 'list', query: { group: dirName }});
     },
 
     getDirString(date){
