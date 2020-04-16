@@ -5,7 +5,6 @@
     <hr>
 
     <v-list>
-      a
       <v-list-item v-for="data in this.dataList" :key="data.path">
         <v-list-item-content>
           <a :href="data.image" target=”_blank”>
@@ -45,14 +44,11 @@ export default {
           return;
       }
       console.log("this.group is truthy.");
-      console.log("listSampleAppsyncTables is : " + listSampleAppsyncTables);
       const targetGroup = { group : this.group };
-      console.log("targetGroup is : " + targetGroup);
 
       let apiResult = await API.graphql(graphqlOperation(listSampleAppsyncTables, targetGroup));
       console.log(apiResult);
       let listAll = apiResult.data.listSampleAppsyncTables.items;
-      console.log(listAll);
 
       for(let data of listAll) {
         let tmp = { path : data.path, image : "" };
